@@ -1,5 +1,5 @@
 [package]
-name = "ModularMC"
+name = "modular-mc"
 version = "0.1.0"
 authors = ["I ran out of name ideas", "QPCrummer", "Jneos"]
 description = "A modular Minecraft server where YOU get total control over the server"
@@ -9,6 +9,17 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-flate2 = "1.0"
-varint = "0.9"
-reqwest = {version = "0.11.5", features = ["blocking"]}
+tokio = { version = "1", features = ["full"] }
+tokio-stream = { version = "0.1" }
+tokio-util = { version = "0.6", features = ["codec"] }
+anyhow = "1"
+thiserror = "1"
+bytes = "1"
+num-traits = "0.2"
+futures = "0.3"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
